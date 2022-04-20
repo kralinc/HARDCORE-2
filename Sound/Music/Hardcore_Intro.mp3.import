@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Hardcore_Intro.mp3-21970dfa4e079de847bb0ccef099d805.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/Hardcore_Intro.mp3"
+dest_files=[ "res://.import/Hardcore_Intro.mp3-21970dfa4e079de847bb0ccef099d805.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
