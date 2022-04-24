@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/robosheet_walk.png-3a0e885e265b8fbbc8fa94ba427bb83e.stex"
+path="res://.import/magic.png-2947ced79456a1aa093697a18f4a45eb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://robosheet_walk.png"
-dest_files=[ "res://.import/robosheet_walk.png-3a0e885e265b8fbbc8fa94ba427bb83e.stex" ]
+source_file="res://Enemies/magic.png"
+dest_files=[ "res://.import/magic.png-2947ced79456a1aa093697a18f4a45eb.stex" ]
 
 [params]
 

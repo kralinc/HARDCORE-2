@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/robosheet_0.bmp-025bdf7f047c45504a991b1a99c37f24.stex"
+path="res://.import/plant.png-085ec523a6cac106092cb65272ab12ad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://robosheet_0.bmp"
-dest_files=[ "res://.import/robosheet_0.bmp-025bdf7f047c45504a991b1a99c37f24.stex" ]
+source_file="res://Enemies/plant.png"
+dest_files=[ "res://.import/plant.png-085ec523a6cac106092cb65272ab12ad.stex" ]
 
 [params]
 

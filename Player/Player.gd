@@ -6,13 +6,14 @@ onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
 onready var hitbox = $Hitbox
 onready var die_sound = $DieSound
+onready var jump_sound = $JumpSound
 
 var MAX_WALK_VEL = 300
 var WALK_ACCEL = 2400
 var WALK_DECEL = 2400
 var RUN_ACCEL_MOD = 1.25
-var JUMP_POWER = 400
-var STOP_JUMP_GRAV = 1200
+export var JUMP_POWER = 400
+export var STOP_JUMP_GRAV = 1400
 
 var air_time = 1e20
 var jumping = false
@@ -37,6 +38,10 @@ func _integrate_forces(state):
 	var right = Input.is_action_pressed("move_right")
 	var run = Input.is_action_pressed("run")
 	var jump = Input.is_action_pressed("jump")
+	var restart = Input.is_action_just_pressed("restart")
+	
+	if dead and restart:
+		get_tree().change_scene("res://level1.tscn")
 
 	var grounded = false
 	var floor_index = -1
@@ -79,6 +84,7 @@ func _integrate_forces(state):
 			if not jumping and jump:
 				jumping = true
 				linear_vel.y = -JUMP_POWER - (abs(linear_vel.x) / 2)
+				jump_sound.play(0)
 				
 	if dead:
 		linear_vel.x = 0
@@ -126,11 +132,11 @@ func setAnimation(grounded, left, right, run):
 func die():
 	if not dead:
 		die_sound.play()
-	dead = true
+		dead = true
+		emit_signal("hit")
 
 func _on_Hitbox_body_entered(body):
 	die()
-	emit_signal("hit")
 
 
 func _on_Hitbox_area_entered(area):
