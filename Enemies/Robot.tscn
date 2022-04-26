@@ -55,6 +55,8 @@ physics_material_override = SubResource( 10 )
 gravity_scale = 10.0
 custom_integrator = true
 script = ExtResource( 2 )
+ledge_ray_direction = Vector2( 20, 40 )
+wall_ray_direction = Vector2( 15, 25 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
@@ -75,5 +77,5 @@ shape = SubResource( 11 )
 cast_to = Vector2( -20, 40 )
 
 [node name="WallRay" type="RayCast2D" parent="."]
-position = Vector2( 0, 25 )
-cast_to = Vector2( -20, 0 )
+position = Vector2( -1, 0 )
+cast_to = Vector2( 15, 25 )
