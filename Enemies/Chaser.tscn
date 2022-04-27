@@ -40,12 +40,18 @@ physics_material_override = SubResource( 27 )
 gravity_scale = 10.0
 custom_integrator = true
 script = ExtResource( 1 )
+CHASE_DISTANCE = 350
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 24 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -10, 0 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 8, 0 )
 shape = SubResource( 25 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
