@@ -16,6 +16,8 @@ export var JUMP_POWER = 400
 export var STOP_JUMP_GRAV = 1400
 
 var air_time = 1e20
+var floor_velocity:Vector2
+var floor_position = Vector2(0, 0)
 var jumping = false
 var facing_left = false
 var dead = false
@@ -53,11 +55,9 @@ func _integrate_forces(state):
 		if contact.dot(Vector2(0, -1)) > 0.6:
 			grounded = true
 			floor_index = x
-	
-	if grounded:
-		air_time = 0.0
-	else:
-		air_time += step
+			
+	linear_vel -= floor_velocity
+	floor_velocity = Vector2(0, 0)
 	
 	if jumping:
 		if linear_vel.y > 0:
@@ -89,6 +89,15 @@ func _integrate_forces(state):
 				
 	if dead:
 		linear_vel.x = 0
+		
+	if grounded:
+		air_time = 0.0
+		floor_velocity = state.get_contact_collider_velocity_at_position(floor_index)
+		#floor_velocity = state.get_contact_collider_position(floor_index) - floor_position
+		#floor_position = state.get_contact_collider_position(floor_index)
+		linear_vel += floor_velocity
+	else:
+		air_time += step
 		
 	linear_vel += state.get_total_gravity() * step
 	state.set_linear_velocity(linear_vel)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/level1/JnRTiles.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://environment/level2/background.png" type="Texture" id=10]
 [ext_resource path="res://environment/level2/OneWayPlat.tscn" type="PackedScene" id=11]
 [ext_resource path="res://environment/level1/background0.png" type="Texture" id=12]
+[ext_resource path="res://environment/level2/MovingPlatform.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -500,8 +501,6 @@ scale = Vector2( 0.1452, 0.1452 )
 
 [node name="Spikes" parent="." instance=ExtResource( 6 )]
 position = Vector2( 575, -156.691 )
-UP_VELOCITY = 500
-TRAVEL_DISTANCE = 200
 
 [node name="Chaser" parent="." instance=ExtResource( 9 )]
 position = Vector2( -684, -69 )
@@ -509,10 +508,22 @@ CHASE_VELOCITY = 10000
 
 [node name="OneWayPlat" parent="." instance=ExtResource( 11 )]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Death" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death"]
 position = Vector2( -39, 194 )
 shape = SubResource( 44 )
+
+[node name="MovingPlatform" parent="." instance=ExtResource( 13 )]
+position = Vector2( -265, -1 )
+TO_VELOCITY = 100
+FROM_VELOCITY = 100
+TRAVEL_DISTANCE = Vector2( 100, 0 )
+
+[node name="MovingPlatform2" parent="." instance=ExtResource( 13 )]
+position = Vector2( -153, -78 )
+TO_VELOCITY = 100
+FROM_VELOCITY = 100
+TRAVEL_DISTANCE = Vector2( 0, -100 )

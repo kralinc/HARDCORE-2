@@ -1,30 +1,27 @@
-extends Sprite
+extends Node2D
 
 
-export var UP_VELOCITY = 1000
-export var DOWN_VELOCITY = 200
-export var TRAVEL_DISTANCE = 1000 setget set_travel_distance
-var BASE_Y = -1
+export var TO_VELOCITY = 400
+export var FROM_VELOCITY = 200
+export var TRAVEL_DISTANCE = Vector2(0,-400)
+var BASE_POS
 
-var moving_up = false
-
-func set_travel_distance(val):
-	TRAVEL_DISTANCE = val
+var moving_to = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	BASE_Y = position.y
+	BASE_POS = position
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if BASE_Y - position.y >= TRAVEL_DISTANCE:
-		moving_up = false
-	elif not moving_up and position.y >= BASE_Y:
-		moving_up = true
-		position.y = BASE_Y
+	if position.distance_to(BASE_POS) >= TRAVEL_DISTANCE.length():
+		moving_to = false
+	elif not moving_to and position.distance_to(BASE_POS) <= 1.0:
+		moving_to = true
+		position = BASE_POS
 	
-	if moving_up:
-		position.y -= UP_VELOCITY * delta
+	if moving_to:
+		position = position.move_toward(position + TRAVEL_DISTANCE, delta * TO_VELOCITY)
 	else:
-		position.y += DOWN_VELOCITY * delta
+		position = position.move_toward(BASE_POS, delta * FROM_VELOCITY)
