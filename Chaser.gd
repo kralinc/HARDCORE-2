@@ -29,7 +29,7 @@ func _integrate_forces(s):
 	set_state()
 	match state:
 		STATE.IDLE:
-			lv.x = (cos(elapsed) * (MAX_VELOCITY / 2)) * step
+			lv.x = (cos(elapsed) * (MAX_VELOCITY)) * step
 		STATE.CHASE:
 			var direction
 			var direction_to_player = position - player.position
