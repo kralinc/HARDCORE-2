@@ -9,8 +9,10 @@ enum STATE {
 	CHASE
 }
 
-export var CHASE_VELOCITY = 1000
-export var CHASE_DISTANCE = 200
+export var CHASE_ACCELERATION = 400
+export var MAX_VELOCITY = 1000
+export var CHASE_DISTANCE = 400
+export var DETECT_DISTANCE = 200
 
 var state = STATE.IDLE
 var elapsed = 0.0
@@ -27,12 +29,13 @@ func _integrate_forces(s):
 	set_state()
 	match state:
 		STATE.IDLE:
-			lv.x = (cos(elapsed) * (CHASE_VELOCITY / 2)) * step
+			lv.x = (cos(elapsed) * (MAX_VELOCITY / 2)) * step
 		STATE.CHASE:
 			var direction
 			var direction_to_player = position - player.position
 			direction = 1 if direction_to_player.x < 0 else -1
-			lv.x = CHASE_VELOCITY * direction * step
+			if abs(lv.x) < MAX_VELOCITY:
+				lv.x += CHASE_ACCELERATION * direction * step
 			
 	var new_facing_left = lv.x < 0
 	if new_facing_left != facing_left:
@@ -45,4 +48,8 @@ func _integrate_forces(s):
 
 func set_state():
 	var distance_to_player = position.distance_to(player.position)
-	state = STATE.CHASE if distance_to_player <= CHASE_DISTANCE else STATE.IDLE
+	match state:
+		STATE.IDLE:
+			state = STATE.CHASE if distance_to_player <= DETECT_DISTANCE else STATE.IDLE
+		STATE.CHASE:
+			state = STATE.CHASE if distance_to_player <= CHASE_DISTANCE else STATE.IDLE

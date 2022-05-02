@@ -27,11 +27,6 @@ var anim = ""
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func _integrate_forces(state):
 	var linear_vel = state.get_linear_velocity()
 	var step = state.get_step()
@@ -92,9 +87,7 @@ func _integrate_forces(state):
 		
 	if grounded:
 		air_time = 0.0
-		floor_velocity = state.get_contact_collider_velocity_at_position(floor_index)
-		#floor_velocity = state.get_contact_collider_position(floor_index) - floor_position
-		#floor_position = state.get_contact_collider_position(floor_index)
+		floor_velocity = Vector2(state.get_contact_collider_velocity_at_position(floor_index).x, 0)
 		linear_vel += floor_velocity
 	else:
 		air_time += step

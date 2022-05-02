@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Chaser.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/chaser.png" type="Texture" id=2]
@@ -33,14 +33,19 @@ animations = [ {
 [sub_resource type="RayShape2D" id=25]
 length = 26.0
 
+[sub_resource type="RectangleShape2D" id=28]
+
 [node name="Chaser" type="RigidBody2D"]
 collision_layer = 3
 collision_mask = 3
+mode = 3
 physics_material_override = SubResource( 27 )
 gravity_scale = 10.0
 custom_integrator = true
 script = ExtResource( 1 )
-CHASE_DISTANCE = 350
+CHASE_ACCELERATION = 700
+MAX_VELOCITY = 700
+DETECT_DISTANCE = 350
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
@@ -54,5 +59,6 @@ shape = SubResource( 25 )
 position = Vector2( 8, 0 )
 shape = SubResource( 25 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -17, -10, 15, -10, 0, 18 )
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 7 )
+shape = SubResource( 28 )

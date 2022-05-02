@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/level1/JnRTiles.png" type="Texture" id=2]
@@ -13,6 +13,14 @@
 [ext_resource path="res://environment/level2/OneWayPlat.tscn" type="PackedScene" id=11]
 [ext_resource path="res://environment/level1/background0.png" type="Texture" id=12]
 [ext_resource path="res://environment/level2/MovingPlatform.tscn" type="PackedScene" id=13]
+[ext_resource path="res://environment/level1/L1MovingPlatform.tscn" type="PackedScene" id=14]
+[ext_resource path="res://environment/level1/L1OneWayPlat.tscn" type="PackedScene" id=15]
+[ext_resource path="res://environment/level3/compact_scifi_platformTiles_32x32.png" type="Texture" id=16]
+[ext_resource path="res://environment/level3/scifi_platform_BG1.jpg" type="Texture" id=17]
+[ext_resource path="res://Enemies/pink.png" type="Texture" id=18]
+[ext_resource path="res://environment/level3/FallingTileCluster.tscn" type="PackedScene" id=19]
+[ext_resource path="res://environment/level1/L1FallingTileCluster.tscn" type="PackedScene" id=20]
+[ext_resource path="res://environment/level3/L3MovingPlatform.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -445,8 +453,128 @@ points = PoolVector2Array( 0, 0, 0, 0, 21, 21, 0, 21, 0, 0 )
 } ]
 0/z_index = 0
 
+[sub_resource type="ConvexPolygonShape2D" id=45]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=46]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=47]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=48]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=49]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="TileSet" id=50]
+0/name = "compact_scifi_platformTiles_32x32.png 0"
+0/texture = ExtResource( 16 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 352, 0, 768, 352 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 45 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 7, 7 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 45 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 8, 7 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 46 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 9, 7 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 47 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 10, 7 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 48 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 11, 7 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 49 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
 [sub_resource type="RectangleShape2D" id=44]
-extents = Vector2( 1307.5, 27 )
+extents = Vector2( 2017.25, 27 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 57, 58 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 18 )
+region = Rect2( 57, 0, 57, 58 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 18 )
+region = Rect2( 114, 0, 57, 58 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 18 )
+region = Rect2( 171, 0, 57, 58 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 18 )
+region = Rect2( 228, 0, 57, 58 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 18 )
+region = Rect2( 285, 0, 57, 58 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 18 )
+region = Rect2( 342, 0, 57, 58 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 18 )
+region = Rect2( 399, 0, 57, 58 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 18 )
+region = Rect2( 456, 0, 57, 58 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 18 )
+region = Rect2( 513, 0, 57, 58 )
+
+[sub_resource type="SpriteFrames" id=61]
+animations = [ {
+"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=62]
+extents = Vector2( 14.7333, 19.4 )
 
 [node name="DEV" type="Node2D"]
 
@@ -466,6 +594,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 1422, -215 )
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="level1tiles" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
@@ -478,6 +613,12 @@ tile_set = SubResource( 19 )
 cell_size = Vector2( 21, 21 )
 format = 1
 tile_data = PoolIntArray( -327703, 0, 262148, -327702, 0, 262146, -327701, 0, 262146, -327700, 0, 262146, -327699, 0, 262146, -327698, 0, 262146, -327697, 0, 262146, -327696, 0, 262146, -327695, 0, 327684, -65563, 0, 262144, -65556, 0, 262149, -65555, 0, 262146, -65554, 0, 262150, -65546, 0, 262144, -27, 0, 262148, -26, 0, 262146, -25, 0, 262146, -24, 0, 262146, -23, 0, 262146, -22, 0, 262146, -21, 0, 262146, -20, 0, 327685, -19, 0, 327681, -18, 0, 327686, -17, 0, 262146, -16, 0, 262146, -15, 0, 262146, -14, 0, 262146, -13, 0, 262146, -12, 0, 262146, -11, 0, 262146, -10, 0, 327684 )
+
+[node name="level3tiles" type="TileMap" parent="."]
+tile_set = SubResource( 50 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -589797, 0, 262153, -589796, 0, 262154, -589795, 0, 262154, -589794, 0, 262154, -589793, 0, 262155, -524261, 0, 327689, -524260, 0, 327690, -524259, 0, 327690, -524258, 0, 327690, -524257, 0, 327691, -458725, 0, 393225, -458724, 0, 393226, -458723, 0, 393226, -458722, 0, 393226, -458721, 0, 393227, -458718, 0, 458759, -458717, 0, 458759, -458716, 0, 458759, -458715, 0, 458759, -393189, 0, 0, -393188, 0, 1, -393187, 0, 1, -393186, 0, 1, -393185, 0, 1, -393184, 0, 1, -393183, 0, 1, -393182, 0, 1, -393181, 0, 3, -393180, 0, 524303, -393179, 0, 524304, -393178, 0, 524304, -393177, 0, 524304, -393176, 0, 524304, -393175, 0, 524304, -393174, 0, 524304, -393173, 0, 524304, -393172, 0, 524305, -327653, 0, 65536, -327652, 0, 65537, -327651, 0, 65537, -327650, 0, 65537, -327649, 0, 65537, -327648, 0, 65537, -327647, 0, 65537, -327646, 0, 65537, -327645, 0, 65539, -327644, 0, 655375, -327643, 0, 655376, -327642, 0, 589840, -327641, 0, 589840, -327640, 0, 589840, -327639, 0, 589840, -327638, 0, 589840, -327637, 0, 589840, -327636, 0, 589841, -262117, 0, 65536, -262116, 0, 65537, -262115, 0, 65537, -262114, 0, 65537, -262113, 0, 65537, -262112, 0, 65537, -262111, 0, 65537, -262110, 0, 65537, -262109, 0, 65539, -262108, 0, 524296, -262107, 0, 524297, -262106, 0, 589839, -262105, 0, 589840, -262104, 0, 589840, -262103, 0, 589840, -262102, 0, 589840, -262101, 0, 589840, -262100, 0, 589841, -196581, 0, 65536, -196580, 0, 65537, -196579, 0, 65537, -196578, 0, 65537, -196577, 0, 65537, -196576, 0, 65537, -196575, 0, 65537, -196574, 0, 65537, -196573, 0, 65539, -196572, 0, 589832, -196571, 0, 589833, -196570, 0, 655375, -196569, 0, 655376, -196568, 0, 655376, -196567, 0, 655376, -196566, 0, 655376, -196565, 0, 655376, -196564, 0, 655377, -131045, 0, 65536, -131044, 0, 65537, -131043, 0, 65537, -131042, 0, 65537, -131041, 0, 65537, -131040, 0, 65537, -131039, 0, 65537, -131038, 0, 65537, -131037, 0, 65539, -131036, 0, 458759, -131035, 0, 458759, -131034, 0, 458759, -131033, 0, 458759, -131032, 0, 458759, -131031, 0, 458759, -131030, 0, 458759, -131029, 0, 458759, -131028, 0, 458759, -65509, 0, 65536, -65508, 0, 65537, -65507, 0, 65537, -65506, 0, 65537, -65505, 0, 65537, -65504, 0, 65537, -65503, 0, 65537, -65502, 0, 65537, -65501, 0, 65539, 27, 0, 196608, 28, 0, 196610, 29, 0, 196610, 30, 0, 196610, 31, 0, 196610, 32, 0, 196610, 33, 0, 196610, 34, 0, 196610, 35, 0, 196611, 65563, 0, 458759, 65564, 0, 458760, 65565, 0, 458760, 65566, 0, 458760, 65567, 0, 458760, 65568, 0, 458760, 65569, 0, 458760, 65570, 0, 458763, 65571, 0, 458763 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -11, -54 )
@@ -504,7 +645,7 @@ position = Vector2( 575, -156.691 )
 
 [node name="Chaser" parent="." instance=ExtResource( 9 )]
 position = Vector2( -684, -69 )
-CHASE_VELOCITY = 10000
+mode = 2
 
 [node name="OneWayPlat" parent="." instance=ExtResource( 11 )]
 
@@ -513,7 +654,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death"]
-position = Vector2( -39, 194 )
+position = Vector2( 670.75, 194 )
 shape = SubResource( 44 )
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 13 )]
@@ -527,3 +668,33 @@ position = Vector2( -153, -78 )
 TO_VELOCITY = 100
 FROM_VELOCITY = 100
 TRAVEL_DISTANCE = Vector2( 0, -100 )
+
+[node name="MovingPlatform3" parent="." instance=ExtResource( 14 )]
+position = Vector2( 594, 21 )
+
+[node name="OneWayPlat2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 157, -167 )
+
+[node name="Pink" type="AnimatedSprite" parent="."]
+position = Vector2( 1672, -182 )
+scale = Vector2( -15, 15 )
+frames = SubResource( 61 )
+frame = 6
+playing = true
+
+[node name="Area2D" type="Area2D" parent="Pink"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pink/Area2D"]
+position = Vector2( -1.13332, 8.26667 )
+shape = SubResource( 62 )
+
+[node name="FallingTileCluster" parent="." instance=ExtResource( 19 )]
+position = Vector2( 1232, -208 )
+
+[node name="FallingTileCluster2" parent="." instance=ExtResource( 20 )]
+position = Vector2( 176, 16 )
+
+[node name="MovingPlatform4" parent="." instance=ExtResource( 21 )]
+position = Vector2( 772, 50 )
