@@ -31,6 +31,7 @@ TRAVEL_DISTANCE = Vector2( 0, -200 )
 
 [node name="PlatformBody" type="KinematicBody2D" parent="."]
 rotation = 1.43051e-06
+collision_layer = 9
 
 [node name="Sprite" type="Sprite" parent="PlatformBody"]
 texture = ExtResource( 1 )
