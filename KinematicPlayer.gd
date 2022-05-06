@@ -34,7 +34,7 @@ func _physics_process(delta):
 	var restart = Input.is_action_just_pressed("restart")
 	
 	if dead and restart:
-		get_tree().change_scene("res://DEV.tscn")
+		get_tree().reload_current_scene()
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not dead:
 		jump_sound.play()
