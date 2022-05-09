@@ -1,7 +1,7 @@
 [gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://KinematicPlayer.tscn" type="PackedScene" id=1]
-[ext_resource path="res://environment/level1/JnRTiles.png" type="Texture" id=2]
+[ext_resource path="res://environment/level1/level1tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://Enemies/Shooty.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/Robot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Spikeball.tscn" type="PackedScene" id=5]
@@ -638,11 +638,13 @@ __meta__ = {
 }
 
 [node name="level1tiles" type="TileMap" parent="."]
+
 tile_set = SubResource( 17 )
+
 cell_size = Vector2( 32, 32 )
 collision_layer = 9
 format = 1
-tile_data = PoolIntArray( -393224, 0, 0, -393222, 0, 0, -393220, 0, 0, -393218, 0, 0, -393217, 0, 0, -458745, 0, 0, -458744, 0, 0, -458743, 0, 0, -458742, 0, 0, -458741, 0, 0, -458740, 0, 0, -458739, 0, 0, -458738, 0, 0, -458737, 0, 0, -327679, 0, 0, -327678, 0, 0, -65522, 0, 0, 65534, 0, 2, 65535, 0, 14, 0, 0, 14, 1, 0, 14, 2, 0, 14, 3, 0, 14, 4, 0, 8, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65549, 0, 0, 65550, 0, 0 )
+tile_data = PoolIntArray( -458745, 0, 0, -458744, 0, 0, -458743, 0, 0, -458742, 0, 0, -458741, 0, 0, -458740, 0, 0, -458739, 0, 0, -458738, 0, 0, -458737, 0, 0, -327679, 0, 0, -327678, 0, 0, -65522, 0, 0, 65534, 0, 2, 65535, 0, 14, 0, 0, 14, 1, 0, 14, 2, 0, 14, 3, 0, 14, 4, 0, 8, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65549, 0, 0, 65550, 0, 0 )
 
 [node name="level2tiles" type="TileMap" parent="."]
 scale = Vector2( 1.5, 1.5 )
@@ -749,8 +751,6 @@ TRAVEL_DISTANCE = Vector2( 0, -400 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -6, -85 )
-JUMP_POWER = 800
-GRAVITY = Vector2( 0, 2000 )
 
 [node name="Crawly" parent="." instance=ExtResource( 8 )]
 position = Vector2( -443, -232 )
