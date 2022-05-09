@@ -81,7 +81,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 5, 20 )
+extents = Vector2( 5.5, 20 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 12
@@ -92,8 +92,8 @@ GRAVITY = Vector2( 0, 2000 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-vframes = 9
 hframes = 8
+vframes = 9
 frame = 23
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -132,16 +132,17 @@ margin_left = -428.0
 margin_top = -145.0
 margin_right = 428.0
 margin_bottom = 145.0
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "PRESS R TO RESTART LOL"
 align = 1
 autowrap = true
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 10.5 )
+position = Vector2( -0.5, 10.5 )
 shape = SubResource( 7 )
+
 [connection signal="hit" from="." to="CanvasLayer/DeadLabel" method="_on_Player_hit"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
