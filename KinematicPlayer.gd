@@ -53,9 +53,8 @@ func _physics_process(delta):
 	var snap_vector = Vector2.ZERO
 	if direction.y == 0.0:
 		snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE
-	var is_on_platform = platform_collider.is_colliding()
 	_velocity = move_and_slide_with_snap(
-		_velocity, snap_vector, Vector2.UP, not is_on_platform, 4, 0.9, false
+		_velocity, snap_vector, Vector2.UP, false, 4, 0.9, false
 	)
 	
 	setAnimation(
