@@ -430,6 +430,7 @@ scale = Vector2( 0.1452, 0.1452 )
 position = Vector2( -684, -69 )
 
 [node name="OneWayPlat" parent="." instance=ExtResource( 11 )]
+position = Vector2( -318, -246 )
 
 [node name="Death" type="Area2D" parent="."]
 collision_layer = 3
@@ -459,7 +460,7 @@ position = Vector2( 157, -167 )
 position = Vector2( 1672, -182 )
 scale = Vector2( -15, 15 )
 frames = SubResource( 63 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="Pink"]
