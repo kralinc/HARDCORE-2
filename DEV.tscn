@@ -448,7 +448,7 @@ position = Vector2( 157, -167 )
 position = Vector2( 1672, -182 )
 scale = Vector2( -15, 15 )
 frames = SubResource( 63 )
-frame = 8
+frame = 3
 playing = true
 
 [node name="Area2D" type="Area2D" parent="Pink"]
@@ -467,9 +467,6 @@ position = Vector2( 176, 16 )
 
 [node name="MovingPlatform4" parent="." instance=ExtResource( 21 )]
 position = Vector2( 772, 50 )
-TO_VELOCITY = 400
-FROM_VELOCITY = 200
-TRAVEL_DISTANCE = Vector2( 0, -400 )
 
 [node name="Spikes2" parent="." instance=ExtResource( 23 )]
 position = Vector2( -778, -129 )
