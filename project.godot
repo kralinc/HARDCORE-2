@@ -42,6 +42,10 @@ config/name="Hardcore!!"
 run/main_scene="res://DEV.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://GLOBALS.tscn"
+
 [display]
 
 window/stretch/mode="2d"

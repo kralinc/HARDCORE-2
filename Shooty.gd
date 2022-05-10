@@ -2,7 +2,7 @@ extends AnimatedSprite
 
 var Magic = preload("res://Enemies/Magic.tscn")
 
-onready var player = get_tree().root.get_child(0).find_node("Player")
+onready var player = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1).find_node("Player")
 
 enum STATE {
 	IDLE

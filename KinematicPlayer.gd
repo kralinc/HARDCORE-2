@@ -125,6 +125,7 @@ func die():
 		dead = true
 		emit_signal("hit")
 		_velocity.x = 0
+		Globals.lives -= 1
 
 func _on_Hitbox_body_entered(body):
 	die()

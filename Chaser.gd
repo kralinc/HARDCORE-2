@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 
-onready var player = get_tree().root.get_child(0).find_node("Player")
+onready var player = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1).find_node("Player")
 onready var sprite = $AnimatedSprite
 
 enum STATE {

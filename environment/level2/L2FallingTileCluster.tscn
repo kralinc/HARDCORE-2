@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://environment/level2/L2FallingTile.tscn" type="PackedScene" id=2]
+
+[node name="FallingTileCluster" type="Node2D"]
+
+[node name="FallingTile" parent="." instance=ExtResource( 2 )]
+
+[node name="FallingTile2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 31, 0 )
+
+[node name="FallingTile3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 62, 0 )
