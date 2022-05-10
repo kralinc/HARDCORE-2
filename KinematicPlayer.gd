@@ -9,10 +9,12 @@ onready var hitbox = $Hitbox
 onready var die_sound = $DieSound
 onready var jump_sound = $JumpSound
 onready var platform_collider = $PlatformCollider
+onready var livesText = $HUD/Lives
 
 var WALK_VEL = 300
 var RUN_ACCEL_MOD = 1.33
 var FLOOR_DETECT_DISTANCE = 20.0
+var MAX_TIME_FOR_AIRBORNE_JUMP = 0.15 #grace period if you're just barely off a platform
 export var JUMP_POWER = 600
 export var STOP_JUMP_GRAV = 1400
 export var GRAVITY = Vector2(0, 9800)
@@ -25,10 +27,11 @@ var jumping = false
 var facing_left = false
 var dead = false
 var anim = ""
+var air_time = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	livesText.text = str(Globals.lives)
 
 func _physics_process(delta):
 	var restart = Input.is_action_just_pressed("restart")
@@ -38,8 +41,13 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not dead:
 		jump_sound.play()
+		
+	if not is_on_floor():
+		air_time += delta
+	else:
+		air_time = 0.0
 
-	var direction = get_direction()
+	var direction = get_direction(_velocity)
 	
 	var run_mod = RUN_ACCEL_MOD if Input.is_action_pressed("run") else 1
 
@@ -63,10 +71,10 @@ func _physics_process(delta):
 		Input.is_action_pressed("move_right"), 
 		Input.is_action_pressed("run"))
 
-func get_direction():
+func get_direction(velocity):
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		-1 if is_on_floor() and Input.is_action_just_pressed("jump") else 0
+		-1 if is_on_floor() and Input.is_action_just_pressed("jump") or can_jump_midair(velocity) else 0
 	)
 
 func calculate_move_velocity(
@@ -118,6 +126,9 @@ func setAnimation(grounded, left, right, run):
 	if new_anim != anim:
 		anim = new_anim
 		animation_player.play(anim)
+		
+func can_jump_midair(velocity):
+	return Input.is_action_just_pressed("jump") and velocity.y > 0.0 and air_time < MAX_TIME_FOR_AIRBORNE_JUMP
 
 func die():
 	if not dead:
@@ -126,6 +137,7 @@ func die():
 		emit_signal("hit")
 		_velocity.x = 0
 		Globals.lives -= 1
+		livesText.text = str(Globals.lives)
 
 func _on_Hitbox_body_entered(body):
 	die()

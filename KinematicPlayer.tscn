@@ -3,9 +3,10 @@
 [ext_resource path="res://Player/man.png" type="Texture" id=1]
 [ext_resource path="res://KinematicPlayer.gd" type="Script" id=2]
 [ext_resource path="res://Sound/ohh.wav" type="AudioStream" id=3]
-[ext_resource path="res://Font/ComicNeue-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Font/hudfont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://DeadLabel.gd" type="Script" id=5]
 [ext_resource path="res://Sound/jump.wav" type="AudioStream" id=6]
+[ext_resource path="res://Player/life.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "die"
@@ -74,12 +75,6 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 6.5, 19.5 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 58
-outline_size = 4
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 4 )
-
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 5.5, 20 )
 
@@ -120,9 +115,9 @@ stream = ExtResource( 3 )
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="DeadLabel" type="Label" parent="CanvasLayer"]
+[node name="DeadLabel" type="Label" parent="HUD"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -133,16 +128,29 @@ margin_top = -145.0
 margin_right = 428.0
 margin_bottom = 145.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 4 )
 text = "PRESS R TO RESTART LOL"
 align = 1
 autowrap = true
 script = ExtResource( 5 )
 
+[node name="Lives" type="Label" parent="HUD"]
+margin_left = 89.0
+margin_top = 2.0
+margin_right = 149.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 4 )
+text = "69"
+
+[node name="Sprite" type="Sprite" parent="HUD"]
+position = Vector2( 46, 34 )
+scale = Vector2( 0.655556, 0.686047 )
+texture = ExtResource( 7 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.5, 10.5 )
 shape = SubResource( 7 )
 
-[connection signal="hit" from="." to="CanvasLayer/DeadLabel" method="_on_Player_hit"]
+[connection signal="hit" from="." to="HUD/DeadLabel" method="_on_Player_hit"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

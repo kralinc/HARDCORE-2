@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://environment/level3/movingplat.png" type="Texture" id=1]
-[ext_resource path="res://Spikes.gd" type="Script" id=2]
+[ext_resource path="res://environment/level2/MovingPlatform.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=45]
 extents = Vector2( 79, 7 )
@@ -25,13 +25,11 @@ tracks/0/keys = {
 
 [node name="MovingPlatform" type="Node2D"]
 script = ExtResource( 2 )
-TO_VELOCITY = 100
-FROM_VELOCITY = 100
-TRAVEL_DISTANCE = Vector2( 0, -200 )
 
 [node name="PlatformBody" type="KinematicBody2D" parent="."]
 rotation = 1.43051e-06
 collision_layer = 9
+motion/sync_to_physics = true
 
 [node name="Sprite" type="Sprite" parent="PlatformBody"]
 texture = ExtResource( 1 )
@@ -41,4 +39,5 @@ position = Vector2( 9.68293e-07, -1 )
 shape = SubResource( 45 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
 anims/move = SubResource( 48 )
