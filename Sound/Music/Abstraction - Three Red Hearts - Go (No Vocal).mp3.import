@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Abstraction - Three Red Hearts - Go (No Vocal).mp3-2ae69e31f80590c7116d928d044fe9ab.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/Abstraction - Three Red Hearts - Go (No Vocal).mp3"
+dest_files=[ "res://.import/Abstraction - Three Red Hearts - Go (No Vocal).mp3-2ae69e31f80590c7116d928d044fe9ab.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

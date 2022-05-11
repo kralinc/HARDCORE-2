@@ -38,9 +38,6 @@ func _physics_process(delta):
 	
 	if dead and restart:
 		get_tree().reload_current_scene()
-	
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not dead:
-		jump_sound.play()
 		
 	if not is_on_floor():
 		air_time += delta
@@ -87,6 +84,7 @@ func calculate_move_velocity(
 	velocity.x = speed.x * direction.x
 	if direction.y != 0.0:
 		velocity.y = speed.y * direction.y
+		jump_sound.play()
 	if is_jump_interrupted:
 		# Decrease the Y velocity by multiplying it, but don't set it to 0
 		# as to not be too abrupt.
@@ -104,7 +102,7 @@ func setAnimation(grounded, left, right, run):
 	
 	if not dead:
 		if grounded:
-			animation_player.playback_speed = 1.5 if run else 1
+			animation_player.playback_speed = 2 if run else 1.5
 			
 			if left or right:
 				new_anim = "run"

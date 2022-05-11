@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://environment/level2/tilemap_packed.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Crawly.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://environment/level2/MovingPlatform.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Chaser.tscn" type="PackedScene" id=8]
 [ext_resource path="res://environment/level2/L2FallingTileCluster.tscn" type="PackedScene" id=9]
+[ext_resource path="res://environment/level1/Music.gd" type="Script" id=10]
+[ext_resource path="res://Sound/Music/Abstraction - Three Red Hearts - Penguins vs Rabbits.mp3" type="AudioStream" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=18]
 points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
@@ -311,7 +313,7 @@ format = 1
 tile_data = PoolIntArray( -1703782, 0, 0, -1638279, 0, 0, -1376132, 0, 0, -1376130, 0, 0, -1376128, 0, 0, -1376126, 0, 0, -851876, 0, 0, -851875, 0, 0, -851868, 0, 0, -851867, 0, 0, -851866, 0, 0, -851865, 0, 0, -851859, 0, 0, -851858, 0, 0, -131091, 0, 0, -130939, 0, 0, -130938, 0, 0, -130937, 0, 0, -130936, 0, 0, -130935, 0, 0, -130934, 0, 0, -130933, 0, 0, -130932, 0, 0, -130931, 0, 0, -130930, 0, 0, -130929, 0, 0, -130928, 0, 0, -130927, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 3877, -673 )
+position = Vector2( -756, -83 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -413,3 +415,7 @@ position = Vector2( 5893, -933 )
 
 [node name="FallingTileCluster3" parent="FallingPlatforms" instance=ExtResource( 9 )]
 position = Vector2( 4359, -617 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+script = ExtResource( 10 )

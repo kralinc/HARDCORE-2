@@ -4,7 +4,7 @@ onready var anim = get_node("AnimationPlayer")
 onready var platform_body = get_node("PlatformBody")
 
 export var destination = Vector2()
-export var time_to_destination = 4
+export var time_to_destination = 4.0
 
 func _ready():
 	# Set up a unique animation for this platform according to its destination vars
