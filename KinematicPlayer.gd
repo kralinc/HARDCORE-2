@@ -8,7 +8,6 @@ onready var animation_player = $AnimationPlayer
 onready var hitbox = $Hitbox
 onready var die_sound = $DieSound
 onready var jump_sound = $JumpSound
-onready var platform_collider = $PlatformCollider
 onready var livesText = $HUD/Lives
 
 var WALK_VEL = 300
@@ -34,9 +33,8 @@ func _ready():
 	livesText.text = str(Globals.lives)
 
 func _physics_process(delta):
-	var restart = Input.is_action_just_pressed("restart")
 	
-	if dead and restart:
+	if dead and Input.is_action_just_pressed("run"):
 		get_tree().reload_current_scene()
 		
 	if not is_on_floor():
@@ -143,3 +141,14 @@ func _on_Hitbox_body_entered(body):
 
 func _on_Hitbox_area_entered(area):
 	die()
+
+
+func _on_Teleporter_teleporting():
+	$Hitbox.set_collision_layer_bit(1, false)
+	$Hitbox.set_collision_mask_bit(1, false)
+	_velocity.x = 0
+	dead = true
+
+
+func _on_Galacticus_pause_changed():
+	$HUD/PauseScreen.visible = !$HUD/PauseScreen.visible

@@ -129,8 +129,9 @@ margin_right = 428.0
 margin_bottom = 145.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "PRESS R TO RESTART LOL"
+text = "PRESS RUN TO RESTART LOL"
 align = 1
+valign = 1
 autowrap = true
 script = ExtResource( 5 )
 
@@ -146,6 +147,28 @@ text = "69"
 position = Vector2( 46, 34 )
 scale = Vector2( 0.655556, 0.686047 )
 texture = ExtResource( 7 )
+
+[node name="PauseScreen" type="Control" parent="HUD"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PauseRect" type="ColorRect" parent="HUD/PauseScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.294118 )
+
+[node name="Label" type="Label" parent="HUD/PauseScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -34.0
+margin_right = 87.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 4 )
+text = "Paused"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.5, 10.5 )

@@ -8,7 +8,6 @@ func _ready():
 		Globals.previous_music = self.stream.resource_name
 		Globals.music_playhead = 0.0
 	self.play(Globals.music_playhead)
-	pass
 
 
 func _process(delta):

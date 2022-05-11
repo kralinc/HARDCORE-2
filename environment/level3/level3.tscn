@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://environment/level3/compact_scifi_platformTiles_32x32.png" type="Texture" id=1]
 [ext_resource path="res://KinematicPlayer.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Sound/Music/Abstraction - Three Red Hearts - Go (No Vocal).mp3" type="AudioStream" id=11]
 [ext_resource path="res://environment/level2/L2Spikes.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Enemies/Robot.tscn" type="PackedScene" id=13]
+[ext_resource path="res://environment/Teleporter.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Galacticus.gd" type="Script" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=46]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -320,7 +322,6 @@ y_speed = 2.5
 position = Vector2( -2461, -426 )
 rotation = -3.14159
 scale = Vector2( 20, -20 )
-frame = 1
 
 [node name="Die" type="Area2D" parent="."]
 collision_layer = 2
@@ -342,5 +343,12 @@ collision_mask = 8
 position = Vector2( 10960, -852 )
 shape = SubResource( 53 )
 
+[node name="Teleporter" parent="." instance=ExtResource( 14 )]
+position = Vector2( 10960, 131 )
+
+[node name="Galacticus" type="Node" parent="."]
+script = ExtResource( 15 )
+
 [connection signal="area_entered" from="SafeArea" to="Pink" method="_on_SafeArea_area_entered"]
 [connection signal="body_entered" from="SafeArea" to="Pink" method="_on_SafeArea_body_entered"]
+[connection signal="pause_changed" from="Galacticus" to="Player" method="_on_Galacticus_pause_changed"]

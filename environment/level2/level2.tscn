@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://environment/level2/tilemap_packed.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Crawly.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://environment/level2/L2FallingTileCluster.tscn" type="PackedScene" id=9]
 [ext_resource path="res://environment/level1/Music.gd" type="Script" id=10]
 [ext_resource path="res://Sound/Music/Abstraction - Three Red Hearts - Penguins vs Rabbits.mp3" type="AudioStream" id=11]
+[ext_resource path="res://environment/Teleporter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Galacticus.gd" type="Script" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=18]
 points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
@@ -290,7 +292,7 @@ points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
 [sub_resource type="RectangleShape2D" id=46]
 extents = Vector2( 4429.75, 14.5 )
 
-[node name="Node2D" type="Node2D"]
+[node name="level2" type="Node2D"]
 
 [node name="Level2Background" parent="." instance=ExtResource( 3 )]
 
@@ -419,3 +421,12 @@ position = Vector2( 4359, -617 )
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 script = ExtResource( 10 )
+
+[node name="Teleporter" parent="." instance=ExtResource( 12 )]
+position = Vector2( 6206, -987 )
+NEXT_SCENE = "res://environment/level3/level3.tscn"
+
+[node name="Galacticus" type="Node" parent="."]
+script = ExtResource( 13 )
+
+[connection signal="pause_changed" from="Galacticus" to="Player" method="_on_Galacticus_pause_changed"]
