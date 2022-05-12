@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://FatalFrame.gd" type="Script" id=1]
+[ext_resource path="res://Sound/gameover.wav" type="AudioStream" id=2]
+[ext_resource path="res://Font/hudfont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Gameover.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "shrink"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+
+[node name="Gameover" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -374.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 3 )
+text = "GAME OVER !!"
+
+[node name="RetryButton" type="Button" parent="."]
+margin_left = 742.0
+margin_top = 119.0
+margin_right = 885.0
+margin_bottom = 193.0
+focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_bottom = NodePath("../QuitButton")
+custom_colors/font_color_focus = Color( 1, 0.713726, 0.713726, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Retry"
+
+[node name="QuitButton" type="Button" parent="."]
+margin_left = 743.0
+margin_top = 251.0
+margin_right = 886.0
+margin_bottom = 325.0
+focus_neighbour_top = NodePath("../RetryButton")
+focus_neighbour_bottom = NodePath("../RetryButton")
+custom_colors/font_color_focus = Color( 1, 0.713726, 0.713726, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Nah"
+
+[node name="FatalFrame" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FatalFrame"]
+anims/shrink = SubResource( 1 )
+
+[connection signal="pressed" from="RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -149,13 +149,16 @@ scale = Vector2( 0.655556, 0.686047 )
 texture = ExtResource( 7 )
 
 [node name="PauseScreen" type="Control" parent="HUD"]
+pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="PauseRect" type="ColorRect" parent="HUD/PauseScreen"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 0.294118 )
 
 [node name="Label" type="Label" parent="HUD/PauseScreen"]
@@ -170,6 +173,15 @@ margin_bottom = 34.0
 custom_fonts/font = ExtResource( 4 )
 text = "Paused"
 
+[node name="QuitButton" type="Button" parent="HUD/PauseScreen"]
+margin_left = 337.0
+margin_top = 356.0
+margin_right = 691.0
+margin_bottom = 430.0
+custom_colors/font_color_focus = Color( 1, 0.690196, 0.690196, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Quit To Menu"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.5, 10.5 )
 shape = SubResource( 7 )
@@ -177,3 +189,4 @@ shape = SubResource( 7 )
 [connection signal="hit" from="." to="HUD/DeadLabel" method="_on_Player_hit"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="pressed" from="HUD/PauseScreen/QuitButton" to="." method="_on_QuitButton_pressed"]

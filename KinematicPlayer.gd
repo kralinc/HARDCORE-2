@@ -10,10 +10,12 @@ onready var die_sound = $DieSound
 onready var jump_sound = $JumpSound
 onready var livesText = $HUD/Lives
 
+onready var alt = Globals.control_prefix
+
 var WALK_VEL = 300
 var RUN_ACCEL_MOD = 1.33
 var FLOOR_DETECT_DISTANCE = 20.0
-var MAX_TIME_FOR_AIRBORNE_JUMP = 0.15 #grace period if you're just barely off a platform
+var MAX_TIME_FOR_AIRBORNE_JUMP = 0.125 #grace period if you're just barely off a platform
 export var JUMP_POWER = 600
 export var STOP_JUMP_GRAV = 1400
 export var GRAVITY = Vector2(0, 9800)
@@ -34,7 +36,7 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if dead and Input.is_action_just_pressed("run"):
+	if dead and Input.is_action_just_pressed("run" + alt):
 		get_tree().reload_current_scene()
 		
 	if not is_on_floor():
@@ -44,9 +46,9 @@ func _physics_process(delta):
 
 	var direction = get_direction(_velocity)
 	
-	var run_mod = RUN_ACCEL_MOD if Input.is_action_pressed("run") else 1
+	var run_mod = RUN_ACCEL_MOD if Input.is_action_pressed("run" + alt) else 1
 
-	var is_jump_interrupted = Input.is_action_just_released("jump") and _velocity.y < 0.0
+	var is_jump_interrupted = Input.is_action_just_released("jump" + alt) and _velocity.y < 0.0
 	var move_velocity_x = WALK_VEL * run_mod
 	var move_velocity_y = JUMP_POWER + abs((_velocity.x * MOVE_JUMP_MOD))
 	if not dead:
@@ -62,14 +64,14 @@ func _physics_process(delta):
 	
 	setAnimation(
 		is_on_floor(), 
-		Input.is_action_pressed("move_left"), 
-		Input.is_action_pressed("move_right"), 
-		Input.is_action_pressed("run"))
+		Input.is_action_pressed("move_left" + alt), 
+		Input.is_action_pressed("move_right" + alt), 
+		Input.is_action_pressed("run" + alt))
 
 func get_direction(velocity):
 	return Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		-1 if is_on_floor() and Input.is_action_just_pressed("jump") or can_jump_midair(velocity) else 0
+		1 if Input.is_action_pressed("move_right" + alt) else 0 - 1 if Input.is_action_pressed("move_left" + alt) else 0,
+		-1 if is_on_floor() and Input.is_action_just_pressed("jump" + alt) or can_jump_midair(velocity) else 0
 	)
 
 func calculate_move_velocity(
@@ -124,16 +126,26 @@ func setAnimation(grounded, left, right, run):
 		animation_player.play(anim)
 		
 func can_jump_midair(velocity):
-	return Input.is_action_just_pressed("jump") and velocity.y > 0.0 and air_time < MAX_TIME_FOR_AIRBORNE_JUMP
+	return Input.is_action_just_pressed("jump" + alt) and velocity.y > 0.0 and air_time < MAX_TIME_FOR_AIRBORNE_JUMP
 
 func die():
-	if not dead:
+	if not dead and Globals.lives > 1:
 		die_sound.play()
 		dead = true
 		emit_signal("hit")
 		_velocity.x = 0
 		Globals.lives -= 1
 		livesText.text = str(Globals.lives)
+	elif Globals.lives <= 1:
+		gameover()
+		
+func gameover():
+	var image = get_viewport().get_texture().get_data()
+	image.flip_y()
+	var ff = ImageTexture.new()
+	ff.create_from_image(image)
+	Globals.fatal_frame = ff
+	get_tree().change_scene("res://Gameover.tscn")
 
 func _on_Hitbox_body_entered(body):
 	die()
@@ -152,3 +164,9 @@ func _on_Teleporter_teleporting():
 
 func _on_Galacticus_pause_changed():
 	$HUD/PauseScreen.visible = !$HUD/PauseScreen.visible
+	$HUD/PauseScreen/QuitButton.grab_focus()
+
+
+func _on_QuitButton_pressed():
+	get_tree().paused = false
+	get_tree().change_scene("res://mainmenu.tscn")
