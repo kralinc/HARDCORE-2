@@ -429,4 +429,5 @@ NEXT_SCENE = "res://environment/level3/level3.tscn"
 [node name="Galacticus" type="Node" parent="."]
 script = ExtResource( 13 )
 
+[connection signal="teleporting" from="Teleporter" to="Player" method="_on_Teleporter_teleporting"]
 [connection signal="pause_changed" from="Galacticus" to="Player" method="_on_Galacticus_pause_changed"]

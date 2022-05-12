@@ -4,8 +4,8 @@ extends AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if self.stream.resource_name != Globals.previous_music:
-		Globals.previous_music = self.stream.resource_name
+	if stream.resource_path != Globals.previous_music:
+		Globals.previous_music = stream.resource_path
 		Globals.music_playhead = 0.0
 	self.play(Globals.music_playhead)
 

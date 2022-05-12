@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Font/hudfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://environment/level1/generictileset_clouds.png" type="Texture" id=2]
+[ext_resource path="res://environment/4559042.jpg" type="Texture" id=3]
+[ext_resource path="res://globe.gdshader" type="Shader" id=4]
+[ext_resource path="res://PracticeVictory.gd" type="Script" id=5]
+[ext_resource path="res://Sound/Music/practiceVictory.mp3" type="AudioStream" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+shader_param/aspect_ratio = 2.0
+shader_param/rotation_speed = 0.3
+shader_param/as_shadow = false
+
+[node name="PracticeVictory" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 524.5, 307 )
+scale = Vector2( 4.23828, 4.40278 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 235, 334 )
+scale = Vector2( 0.33, 0.33 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 612.0
+margin_top = 41.0
+margin_right = 815.0
+margin_bottom = 109.0
+custom_fonts/font = ExtResource( 1 )
+text = "U did it!"
+
+[node name="DeathsLabel" type="Label" parent="."]
+margin_left = 477.0
+margin_top = 146.0
+margin_right = 1124.0
+margin_bottom = 300.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = ExtResource( 1 )
+text = "You died 00 times to get here!"
+align = 1
+autowrap = true
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 473.0
+margin_top = 279.0
+margin_right = 1139.0
+margin_bottom = 489.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = ExtResource( 1 )
+text = "Now can you beat HARDCORE!!?"
+align = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="."]
+margin_left = 585.0
+margin_top = 436.0
+margin_right = 877.0
+margin_bottom = 510.0
+custom_colors/font_color_focus = Color( 1, 0.682353, 0.682353, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

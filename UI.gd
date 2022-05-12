@@ -24,6 +24,9 @@ func _input(e):
 			
 	if controls_menu and e.is_action_pressed("ui_cancel"):
 		_on_BackButton_pressed()
+		
+	if e.is_action_pressed("funny"):
+		get_tree().change_scene("res://DEV.tscn")
 
 
 func _on_HardcoreButton_pressed():
@@ -67,3 +70,7 @@ func _on_AltControls_pressed():
 		$Controls/ControllerStuff/AltControls.visible = !$Controls/ControllerStuff/AltControls.visible
 		
 		Globals.control_prefix = "" if Globals.control_prefix == "_alt" else "_alt"
+
+
+func _on_Quit_pressed():
+	get_tree().quit()

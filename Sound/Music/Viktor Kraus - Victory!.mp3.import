@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Viktor Kraus - Victory!.mp3-a580a8b1af489c0db39bad178efb7fb1.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/Viktor Kraus - Victory!.mp3"
+dest_files=[ "res://.import/Viktor Kraus - Victory!.mp3-a580a8b1af489c0db39bad178efb7fb1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

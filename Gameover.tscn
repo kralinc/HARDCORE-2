@@ -1,9 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://FatalFrame.gd" type="Script" id=1]
 [ext_resource path="res://Sound/gameover.wav" type="AudioStream" id=2]
 [ext_resource path="res://Font/hudfont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Gameover.gd" type="Script" id=4]
+[ext_resource path="res://environment/sad.png" type="Texture" id=5]
+[ext_resource path="res://globe.gdshader" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 6 )
+shader_param/aspect_ratio = 2.0
+shader_param/rotation_speed = 0.3
+shader_param/as_shadow = false
 
 [sub_resource type="Animation" id=1]
 resource_name = "shrink"
@@ -17,7 +25,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 0.6, 0.6 ) ]
 }
 
 [node name="Gameover" type="Control"]
@@ -31,6 +39,14 @@ __meta__ = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource( 3 )
+margin_left = 691.0
+margin_top = 265.0
+margin_right = 1016.0
+margin_bottom = 585.0
+texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 1.0

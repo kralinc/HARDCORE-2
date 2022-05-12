@@ -17,9 +17,13 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	$TeleportSound.play()
 	$Fader.play("fadeout")
+	emit_signal("teleporting")
 
 
 func _on_Fader_animation_finished(anim_name):
 	if anim_name == "fadeout":
-		Globals.new_scene = true
-		get_tree().change_scene(NEXT_SCENE)
+		if get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1).name == "level3" and not Globals.hardcore:
+			get_tree().change_scene("res://PracticeVictory.tscn")
+		else:
+			Globals.new_scene = true
+			get_tree().change_scene(NEXT_SCENE)

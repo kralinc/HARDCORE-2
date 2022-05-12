@@ -439,7 +439,8 @@ destination = Vector2( 300, 0 )
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 14 )]
 position = Vector2( 594, 21 )
-script = null
+destination = Vector2( 0, -300 )
+time_to_destination = 3.0
 
 [node name="OneWayPlat2" parent="." instance=ExtResource( 15 )]
 position = Vector2( 157, -167 )
@@ -448,7 +449,7 @@ position = Vector2( 157, -167 )
 position = Vector2( 1672, -182 )
 scale = Vector2( -15, 15 )
 frames = SubResource( 63 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Area2D" type="Area2D" parent="Pink"]
@@ -467,6 +468,7 @@ position = Vector2( 176, 16 )
 
 [node name="MovingPlatform4" parent="." instance=ExtResource( 21 )]
 position = Vector2( 772, 50 )
+destination = Vector2( 0, -400 )
 
 [node name="Spikes2" parent="." instance=ExtResource( 23 )]
 position = Vector2( -778, -129 )
