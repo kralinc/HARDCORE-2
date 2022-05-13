@@ -261,8 +261,8 @@ scale = Vector2( 1.65305, 2.82852 )
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Spikeball" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 1255.5, -585 )
-amplitude = 150
+position = Vector2( 1242, -710 )
+amplitude = 125
 x_speed = 4.0
 
 [node name="Spikeball2" parent="Obstacles" instance=ExtResource( 6 )]
@@ -322,7 +322,7 @@ y_speed = 2.5
 position = Vector2( -2461, -426 )
 rotation = -3.14159
 scale = Vector2( 20, -20 )
-frame = 8
+frame = 2
 
 [node name="Die" type="Area2D" parent="."]
 collision_layer = 2

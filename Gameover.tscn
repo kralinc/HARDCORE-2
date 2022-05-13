@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://FatalFrame.gd" type="Script" id=1]
 [ext_resource path="res://Sound/gameover.wav" type="AudioStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Gameover.gd" type="Script" id=4]
 [ext_resource path="res://environment/sad.png" type="Texture" id=5]
 [ext_resource path="res://globe.gdshader" type="Shader" id=6]
+[ext_resource path="res://Sound/menu.wav" type="AudioStream" id=7]
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 6 )
@@ -90,5 +91,10 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FatalFrame"]
 anims/shrink = SubResource( 1 )
 
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="focus_exited" from="RetryButton" to="." method="_on_RetryButton_focus_exited"]
 [connection signal="pressed" from="RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="focus_exited" from="QuitButton" to="." method="_on_QuitButton_focus_exited"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]

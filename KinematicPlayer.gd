@@ -8,7 +8,6 @@ onready var animation_player = $AnimationPlayer
 onready var hitbox = $Hitbox
 onready var die_sound = $DieSound
 onready var jump_sound = $JumpSound
-onready var livesText = $HUD/Lives
 
 onready var alt = Globals.control_prefix
 
@@ -32,11 +31,11 @@ var air_time = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	livesText.text = str(Globals.lives)
+	pass
 
 func _physics_process(delta):
 	
-	if dead and Input.is_action_just_pressed("run" + alt):
+	if dead and Input.is_action_just_pressed("walk" + alt):
 		get_tree().reload_current_scene()
 		
 	if not is_on_floor():
@@ -46,10 +45,10 @@ func _physics_process(delta):
 
 	var direction = get_direction(_velocity)
 	
-	var run_mod = RUN_ACCEL_MOD if Input.is_action_pressed("run" + alt) else 1
+	var walk_mod = 1 if Input.is_action_pressed("walk" + alt) else RUN_ACCEL_MOD
 
 	var is_jump_interrupted = Input.is_action_just_released("jump" + alt) and _velocity.y < 0.0
-	var move_velocity_x = WALK_VEL * run_mod
+	var move_velocity_x = WALK_VEL * walk_mod
 	var move_velocity_y = JUMP_POWER + abs((_velocity.x * MOVE_JUMP_MOD))
 	if not dead:
 		_velocity = calculate_move_velocity(_velocity, direction, Vector2(move_velocity_x, move_velocity_y), is_jump_interrupted)
@@ -66,7 +65,7 @@ func _physics_process(delta):
 		is_on_floor(), 
 		Input.is_action_pressed("move_left" + alt), 
 		Input.is_action_pressed("move_right" + alt), 
-		Input.is_action_pressed("run" + alt))
+		Input.is_action_pressed("walk" + alt))
 
 func get_direction(velocity):
 	return Vector2(
@@ -91,7 +90,7 @@ func calculate_move_velocity(
 		velocity.y *= 0.6
 	return velocity
 
-func setAnimation(grounded, left, right, run):
+func setAnimation(grounded, left, right, walk):
 	var new_anim = anim
 	var newly_facing_left = facing_left
 	
@@ -102,7 +101,7 @@ func setAnimation(grounded, left, right, run):
 	
 	if not dead:
 		if grounded:
-			animation_player.playback_speed = 2 if run else 1.5
+			animation_player.playback_speed = 1.5 if walk else 2
 			
 			if left or right:
 				new_anim = "run"
@@ -129,14 +128,13 @@ func can_jump_midair(velocity):
 	return Input.is_action_just_pressed("jump" + alt) and velocity.y > 0.0 and air_time < MAX_TIME_FOR_AIRBORNE_JUMP
 
 func die():
-	if not dead and Globals.lives > 1:
+	if not Globals.hardcore:
 		die_sound.play()
 		dead = true
 		emit_signal("hit")
 		_velocity.x = 0
-		Globals.lives -= 1
-		livesText.text = str(Globals.lives)
-	elif Globals.lives <= 1:
+		Globals.deaths += 1
+	else:
 		gameover()
 		
 func gameover():

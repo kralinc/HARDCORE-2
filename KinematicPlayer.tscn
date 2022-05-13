@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/man.png" type="Texture" id=1]
 [ext_resource path="res://KinematicPlayer.gd" type="Script" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Font/hudfont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://DeadLabel.gd" type="Script" id=5]
 [ext_resource path="res://Sound/jump.wav" type="AudioStream" id=6]
-[ext_resource path="res://Player/life.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "die"
@@ -129,24 +128,11 @@ margin_right = 428.0
 margin_bottom = 145.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "PRESS RUN TO RESTART LOL"
+text = "PRESS WALK TO RESTART LOL"
 align = 1
 valign = 1
 autowrap = true
 script = ExtResource( 5 )
-
-[node name="Lives" type="Label" parent="HUD"]
-margin_left = 89.0
-margin_top = 2.0
-margin_right = 149.0
-margin_bottom = 70.0
-custom_fonts/font = ExtResource( 4 )
-text = "69"
-
-[node name="Sprite" type="Sprite" parent="HUD"]
-position = Vector2( 46, 34 )
-scale = Vector2( 0.655556, 0.686047 )
-texture = ExtResource( 7 )
 
 [node name="PauseScreen" type="Control" parent="HUD"]
 pause_mode = 2

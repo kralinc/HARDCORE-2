@@ -9,6 +9,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Fader/AnimationPlayer.play("fadein")
+	Globals.won = true
 
 func _input(e):
 	if e.is_action_pressed("pause"):

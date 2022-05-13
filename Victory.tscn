@@ -612,7 +612,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ScrollArea"]
 position = Vector2( 502, 312 )
 frames = SubResource( 31 )
-frame = 23
+frame = 13
 playing = true
 
 [node name="GodRays" type="ColorRect" parent="ScrollArea"]
@@ -689,7 +689,8 @@ margin_top = 711.0
 margin_right = 398.0
 margin_bottom = 779.0
 custom_fonts/font = ExtResource( 1 )
-text = "He"
+text = "Gefen
+(canonically gay)"
 align = 1
 valign = 1
 
@@ -745,7 +746,7 @@ margin_top = 1213.0
 margin_right = 404.0
 margin_bottom = 1281.0
 custom_fonts/font = ExtResource( 1 )
-text = "You!"
+text = "Pilk Man"
 align = 1
 valign = 1
 
@@ -783,34 +784,34 @@ position = Vector2( 187, 1015 )
 scale = Vector2( 1.74, 1.75926 )
 frames = SubResource( 43 )
 animation = "walk"
-frame = 1
+frame = 6
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ScrollArea"]
 position = Vector2( 809, 1077 )
 scale = Vector2( -5.37, 5.338 )
 frames = SubResource( 48 )
+frame = 2
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ScrollArea"]
 position = Vector2( 189, 1385 )
 scale = Vector2( 5.37, 5.33796 )
 frames = SubResource( 53 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ScrollArea"]
-position = Vector2( 732, 1467 )
+position = Vector2( 797, 1533 )
 scale = Vector2( -1.355, 1.367 )
 frames = SubResource( 84 )
-frame = 8
+frame = 4
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ScrollArea"]
 position = Vector2( 733, 1944 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 93 )
-frame = 5
+frame = 7
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ScrollArea"]
