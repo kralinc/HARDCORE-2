@@ -39,8 +39,9 @@ _global_script_class_icons={
 [application]
 
 config/name="Hardcore!!"
+config/description="The game ever made"
 run/main_scene="res://mainmenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://hicon.png"
 
 [autoload]
 

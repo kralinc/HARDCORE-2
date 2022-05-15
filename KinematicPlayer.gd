@@ -129,11 +129,12 @@ func can_jump_midair(velocity):
 
 func die():
 	if not Globals.hardcore:
-		die_sound.play()
-		dead = true
-		emit_signal("hit")
-		_velocity.x = 0
-		Globals.deaths += 1
+		if not dead:
+			die_sound.play()
+			dead = true
+			emit_signal("hit")
+			_velocity.x = 0
+			Globals.deaths += 1
 	else:
 		gameover()
 		
