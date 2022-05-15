@@ -38,6 +38,7 @@ The game can be played with a keyboard or a controller. These both contain 2 dif
 * [GIMP](https://gimp.org), image editing
 * [Kenney Creature Mixer](https://kenney.itch.io/creature-mixer), a couple of the enemies in level 2
 * [Skuawk](https://skuawk.com), a couple of background images
+* [Godot Shaders](https://godotshaders.com), shaders
 
 # A near comprehensive list of every third party asset used in the game
 * https://opengameart.org/content/platformer-animations
@@ -57,5 +58,8 @@ The game can be played with a keyboard or a controller. These both contain 2 dif
 * https://opengameart.org/content/victory-1
 * https://opengameart.org/content/victory
 * https://commons.wikimedia.org/wiki/File:Qwerty.svg
+* https://godotshaders.com/shader/2d-spinning-sphere/
+* https://godotshaders.com/shader/squishy-scroll/
+* https://godotshaders.com/shader/god-rays/
 
 ![Screenshot of the game HARDCORE!!](screenshot.png)
