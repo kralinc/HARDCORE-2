@@ -28,7 +28,7 @@ The game can be played with a keyboard or a controller. These both contain 2 dif
 
 * You may clone the github repo and run the game in the godot editor. It should not require any other setup to work.
 * [The game is available online.](https://kralinc.github.io/pages/hardcore2/index.html) Due to the limitations of Godot's html5 export, the audio is desynched and may run worse than the native version.
-* A windows/mac/linux build of the game will be up on (cactusdan.itch.io) soon.
+* A windows/mac/linux build of the game is here https://cactusdan.itch.io/hardcore.
 
 # Programs and websites used in the creation of this game
 * [Open Game Art](https://opengameart.org), for pretty much all of the art assets
