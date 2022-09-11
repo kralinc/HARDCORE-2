@@ -41,6 +41,7 @@ The game can be played with a keyboard or a controller. These both contain 2 dif
 * [Godot Shaders](https://godotshaders.com), shaders
 
 # A near comprehensive list of every third party asset used in the game
+* https://abstractionmusic.bandcamp.com/album/three-red-hearts
 * https://opengameart.org/content/platformer-animations
 * https://opengameart.org/content/generic-platformer-tileset-16x16-background
 * https://opengameart.org/content/fighting-robot-for-ultimate-smash-friends
